@@ -9,6 +9,7 @@ let {
   Text,
   TextInput,
   TouchableHighlight,
+  DeviceEventEmitter,
   View,
   Navigator,
 } = React;
@@ -20,14 +21,28 @@ class Login extends React.Component{
     this.state = {
       username: '',
       password: '',
+      keyboardOffset: 0
     }
+  }
+  _keyboardWillShow(e) {
+      var newCoordinates = e.endCoordinates.height;
+      this.setState({
+          keyboardOffset: newCoordinates
+      })
+  }
+  _keyboardWillHide(e) {
+      this.setState({
+          keyboardOffset: 0
+      })
   }
   componentDidMount(){
     ddp.initialize();
+    _keyboardWillShowSubscription = DeviceEventEmitter.addListener('keyboardWillShow', (e) => this._keyboardWillShow(e));
+    _keyboardWillHideSubscription = DeviceEventEmitter.addListener('keyboardWillHide', (e) => this._keyboardWillHide(e));
   }
   render(){
     return (
-      <View style={styles.container}>
+      <View style={[styles.container, {paddingBottom: this.state.keyboardOffset}]}>
         <Text style={styles.title}>Welcome Back!</Text>
         <TextInput
           style={styles.input}
@@ -89,7 +104,7 @@ let styles = StyleSheet.create({
   },
   input: {
     height: 50,
-    marginBottom: 12,
+    marginBottom: 20,
     fontSize: 16,
     padding: 15,
     borderColor: '#b4b4b4',
@@ -103,7 +118,7 @@ let styles = StyleSheet.create({
     fontWeight: '300',
     color: '#1A263F',
     padding: 5,
-    marginBottom: 25
+    marginBottom: 25,
   },
   button: {
     backgroundColor: '#E0514B',
@@ -122,7 +137,7 @@ let styles = StyleSheet.create({
     color: '#1A263F',
     textAlign: 'center',
     fontSize: 14,
-    marginTop: 10, 
+    marginTop: 10,
   },
   linkContainer: {
 

@@ -5,6 +5,7 @@ import _ from 'underscore';
 
 let ddpClient = new DDPClient({
   // All properties optional, defaults shown
+  // host : "YOUR_IP_ADDRESS",
   host : "localhost",
   port : 3000,
   ssl  : false,
@@ -154,6 +155,7 @@ ddp.loginWithPassword = function(username, password) {
 
         obj.loggedIn = true;
         obj.userId = res.id;
+        obj.username = username;
 
         resolve(obj);
       } else {
@@ -172,7 +174,7 @@ ddp.logout = function() {
         console.log('err', err);
       } else {
         console.log('delete the tokens');
-        AsyncStorage.multiRemove(['userId', 'loginToken', 'loginTokenExpires']);
+        AsyncStorage.multiRemove(['userId', 'username', 'loginToken', 'loginTokenExpires']);
       }
     });
     resolve(true);

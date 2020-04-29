@@ -141,7 +141,7 @@ class Chat extends React.Component{
 let styles = StyleSheet.create({
   inputBox: {
     height: 60,
-    backgroundColor: '#F3EFEF', 
+    backgroundColor: '#F3EFEF',
     flexDirection: 'row'
   },
   input: {
@@ -158,6 +158,15 @@ let styles = StyleSheet.create({
     backgroundColor: 'white',
   },
   buttonActive: {
+    flex: .4,
+    backgroundColor: "#E0514B",
+    borderRadius: 6,
+    justifyContent: 'center',
+    margin: 10,
+  },
+  buttonInactive: {
+    flex: .4,
+    backgroundColor: "#E0514B",
     flex: .4,
     backgroundColor: "#E0514B",
     borderRadius: 6,

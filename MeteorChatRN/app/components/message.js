@@ -19,6 +19,7 @@ let {
 
 class Message extends React.Component{
   render(){
+    console.log('MSG', this.props.msg);
     return (
       <View style={{flex: 1,}} >
         <View style={styles.container}>
@@ -63,6 +64,46 @@ let styles = StyleSheet.create({
   messageBox: {
     flex: 1,
     alignItems: 'stretch',
+    padding: 10,
+  },
+  row: {
+    flexDirection: 'row',
+    marginBottom: 2,
+  },
+  messageView: {
+    flex: 1,
+    paddingRight: 15,
+  },
+  messageText: {
+    fontSize: 14,
+    fontWeight: '300'
+  },
+  author:{
+    fontSize: 12,
+    fontWeight: '700',
+  },
+  row: {
+    flexDirection: 'row',
+    marginBottom: 3
+  },
+  messageView: {
+    backgroundColor: 'white',
+    flex: 1,
+    paddingRight: 15
+  },
+  messageText: {
+    fontSize: 14,
+    fontWeight: '300',
+    padding: 10
+  },
+  row: {
+    flexDirection: 'row',
+    marginBottom: 2
+  },
+  messageView: {
+    backgroundColor: 'white',
+    flex: 1,
+    paddingRight: 15,
     padding: 10
   },
   row: {
@@ -82,8 +123,25 @@ let styles = StyleSheet.create({
     fontSize: 12,
     fontWeight: '700'
   },
+  messageText: {
+    fontSize: 14,
+    fontWeight: '300',
+  },
+  author:{
+    fontSize: 12,
+    fontWeight: '700'
+  },
+  icon: {
+    height: 40,
+    width: 40,
+    marginTop: 10,
+    marginLeft: 15
+ },
   sent:{
     fontSize: 12,
+    fontWeight: '300',
+    color: '#9B9B9B',
+    marginLeft: 10,
     color: '#9B9B9B',
     fontWeight: '300',
     marginLeft: 10
